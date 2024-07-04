@@ -1,0 +1,8 @@
+.polls-container {
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar on IE and Edge */
+}
+
+.polls-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on Chrome, Safari, and Opera */
+}

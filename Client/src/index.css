@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rainbow {
+  0%, 100% { color: #FF0000; }
+  16% { color: #FF7F00; }
+  32% { color: #FFFF00; }
+  48% { color: #00FF00; }
+  64% { color: #0000FF; }
+  80% { color: #4B0082; }
+}
+
+.rainbow-text span {
+  display: inline-block;
+  animation: rainbow 3s infinite;
+}
