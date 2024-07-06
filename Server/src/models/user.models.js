@@ -36,7 +36,6 @@ const userschema = new Schema(
         },
         faculty: {
             type: String,
-            enum: ["BSC.CSIT", "BBS", "BHM"],
         },
         semester: {
             type: Number
