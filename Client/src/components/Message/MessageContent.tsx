@@ -36,7 +36,7 @@ function MessageContent() {
 
   return (
     <>
-      <div className='dark:bg-gray-950 dark:text-white relative w-[728px] flex items-center justify-center gap-1 p-2 text-black shadow-2xl bg-slate-50'>
+      <div className='dark:bg-gray-950 dark:text-white relative w-[320px] md:w-[728px] flex items-center justify-center gap-1 p-2 text-black shadow-2xl bg-slate-50'>
               <div className='dark:bg-slate-950 dark:text-white m-5 flex justify-between gap-1 p-2 text-black shadow-2xl bg-slate-50'>
             <div className='absolute top-0 left-8 flex items-center justify-center gap-1 border rounded-xl border-b-stone-950'>
               <p className='text-2xl font-bold'>{selectedperson.username}</p>
@@ -47,7 +47,7 @@ function MessageContent() {
                 <IoVideocamOutline className='text-3xl'/>
             </div>
         </div>
-        <div className="absolute top-11 right-0 w-full h-[590px] overflow-y-auto p-2">
+        <div className="absolute top-11 right-0 w-full h-[180px] md:h-[590px] overflow-y-auto p-2">
           <Chatcard/>
         </div>  
         <div className='dark:bg-slate-700 dark:text-white absolute bottom-0 left-0 w-full flex items-center justify-center gap-1 p-2 text-black shadow-2xl bg-slate-50'>       

@@ -4,6 +4,7 @@ import {
     getPollsBySemester,
     getAllPolls,
     votePoll,
+    getPollbyid,
     deletePoll
 } from "../controllers/poll.controllers.js";
 
@@ -17,6 +18,9 @@ router.route("/")
 
 router.route("/:id")
     .delete(verifyJWT, deletePoll);
+
+router.route("/:id")
+    .get(verifyJWT, getPollbyid);
 
 router.route("/vote")
     .post(verifyJWT, votePoll);

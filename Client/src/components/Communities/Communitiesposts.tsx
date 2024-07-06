@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Communitiespost from "./Communitiespost";
 import axios from "axios";
 import moment from "moment";
@@ -18,45 +18,41 @@ interface Post {
 
 interface PostProps {
   id: string | undefined;
-  name : string | undefined
+  name: string | undefined;
 }
 
-const Communitiesposts: React.FC<PostProps> = ({ id , name }) => {
-
-  console.log(id)
-
-  const [posts, setPosts] = React.useState<Post[]>([]);
+const Communitiesposts: React.FC<PostProps> = ({ id, name }) => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const handleNewPost = (data: Post) => {
       setPosts((prevPosts) => [data, ...prevPosts]);
       console.log(data);
-      console.log('i am listening');
+      console.log('I am listening');
     };
-  
+
     socket.on("new-post", handleNewPost);
-  
+
     return () => {
       socket.off("new-post", handleNewPost);
     };
-  }, [posts]);
-  
+  }, []);
 
   useEffect(() => {
     const getPosts = async () => {
-      axios.defaults.withCredentials = true
-      if(id === undefined) {
-        toast.error("Community not found")
-        return
+      axios.defaults.withCredentials = true;
+      if (!id) {
+        toast.error("Community not found");
+        return;
       }
       await axios
-        .get("http://localhost:7000/api/v1/posts/community/" + id)
+        .get(`http://localhost:7000/api/v1/posts/community/${id}`)
         .then((response) => {
           setPosts(response.data.data);
         });
     };
     getPosts();
-  }, []);
+  }, [id]);
 
   console.log("posts", posts);
 
@@ -66,7 +62,7 @@ const Communitiesposts: React.FC<PostProps> = ({ id , name }) => {
         posts.map((post) => (
           <Communitiespost
             key={post._id}
-            name = {name}
+            name={name || "Unknown Community"}
             avatar={post.createdBy.avatar}
             creatorName={post.createdBy.username}
             content={post.content}

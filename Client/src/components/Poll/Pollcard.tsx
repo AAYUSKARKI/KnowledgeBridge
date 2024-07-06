@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-
+import ShimmerButton from '../magicui/shimmer-button';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 interface PollOption {
     option: string;
     votes: number;
@@ -17,10 +19,19 @@ interface Poll {
 interface PollCardProps {
     poll: Poll;
     onVote: (pollId: string, selectedOption: string) => void;
+    id: string;
 }
 
-const PollCard: React.FC<PollCardProps> = ({ poll, onVote }) => {
+const PollCard: React.FC<PollCardProps> = ({ poll, onVote, id }) => {
+
+    const {user} = useSelector((state: any) => state.user)
     const [selectedOption, setSelectedOption] = useState<string>('');
+
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        user.role === 'student' ? navigate(`/poll/result/${id}`) : navigate(`/poll/action/${id}`);
+    };
 
     const handleVote = (option: string) => {
         if (option !== selectedOption) {
@@ -63,6 +74,9 @@ const PollCard: React.FC<PollCardProps> = ({ poll, onVote }) => {
                     </li>
                 ))}
             </ul>
+            <ShimmerButton onClick={handleNavigate} className="ml-2 px-3 py-1 bg-blue-500 dark:text-white hover:bg-blue-600 text-white rounded-md">  
+                            {user.role==="student" ? 'View Results' : 'Take Action'}
+            </ShimmerButton>
         </div>
     );
 };

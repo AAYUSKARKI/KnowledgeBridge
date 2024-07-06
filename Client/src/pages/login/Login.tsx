@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setuser } from "../../redux/userslice"; // Adjust the import path as needed
 import toast from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface LoginData {
     email: string;
@@ -13,6 +14,7 @@ interface LoginData {
 }
 
 function Login() {
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState<LoginData>({ email: "", password: "" });
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
@@ -43,6 +45,7 @@ function Login() {
             axios.defaults.headers.common["Authorization"] = `Bearer ${accesstoken}`;
 
             toast.success("Login successful");
+            navigate('/dashboard');
         } catch (error: any) {
             toast.error(error.response?.data?.message || "Something went wrong");
         } finally {
@@ -53,8 +56,8 @@ function Login() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             <Header />
-            <div className="flex flex-col items-center justify-center w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">Login</h1>
+            <div className="dark:bg-slate-800 flex flex-col items-center justify-center w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+                <h1 className="text-3xl font-bold dark:text-white text-gray-800 mb-6">Login</h1>
                 <form className="w-full" onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-4 mb-6">
                         <div className="relative">
@@ -97,6 +100,7 @@ function Login() {
                     </button>
                 </form>
             </div>
+            <p className="mt-4 bg-white dark:bg-gray-950 text-gray-600 dark:text-white">Don't have an account? <a href="/register" className="text-indigo-600 dark:text-indigo-400">Register</a></p>
         </div>
     );
 }

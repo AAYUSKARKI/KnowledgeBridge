@@ -2,6 +2,8 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import LandingPage from './pages/LandingPage/LandingPage'
 // import Header from './components/Header/Header'
 import Dashboard from './components/Dashboard/Dashboard'
+import Pollaction from './components/Poll/Pollaction'
+import Pollresult from './components/Poll/Pollresult'
 import Login from './pages/login/Login'
 import EventSchedule from './pages/Event/EventSchedule'
 import Createcommunity from './components/Communities/Createcommunity'
@@ -39,9 +41,11 @@ function App() {
             <Route path="/comments" element={<CommentsSection />} />
             <Route path='/polls' element={<Polls/>}/>
             <Route path="/createpoll" element={<PollForm />} />
-            <Route path="/cponc" element={<Cponc />} />
-            <Route path="/vponc" element={<Communitiesposts />} />
+            <Route path="/cponc" element={<Cponc communityid={undefined} popup={false} name={undefined} />} />
+            <Route path="/vponc" element={<Communitiesposts id={undefined} name={undefined} />} />
             <Route path='/communities/:name/:id' element={<Communitydesc />} />
+            <Route path="/poll/action/:id" element={<Pollaction />} />
+            <Route path="/poll/result/:id" element={<Pollresult />} />
           </Routes>
     </BrowserRouter></>
   )

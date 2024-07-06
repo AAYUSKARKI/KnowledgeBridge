@@ -16,8 +16,8 @@ function MessageStudent({ username, avatar , id }: Student) {
     }
 
   return (
-            <div onClick={handleClick} className='cursor-pointer mb-1 dark:bg-slate-950 dark:text-white flex items-center justify-center gap-1 p-2 text-black shadow-2xl bg-slate-50'>
-                <p className='text-2xl font-bold'>{username}</p>
+            <div onClick={handleClick} className='cursor-pointer mb-1 dark:bg-slate-950 dark:text-white flex flex-col-reverse md:flex-row md:flex items-center justify-center gap-1 p-2 text-black shadow-2xl bg-slate-50'>
+                <p className='text-sm md:text-2xl font-bold'>{username.split(' ')[0]}</p>
                 <img className='w-12 h-12 rounded-full object-cover' src={avatar} alt="Person" />
             </div>
   )

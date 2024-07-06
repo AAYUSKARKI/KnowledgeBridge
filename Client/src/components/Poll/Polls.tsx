@@ -69,7 +69,7 @@ const Polls = () => {
             {loading ? (
                 <div>Loading polls...</div>
             ) : polls.length > 0 ? (
-                polls.map((poll) => <PollCard key={poll._id} poll={poll} onVote={handleVote} />)
+                polls.map((poll) => <PollCard key={poll._id} id={poll._id} poll={poll} onVote={handleVote} />)
             ) : (
                 <div>No polls available</div>
             )}

@@ -21,7 +21,7 @@ const menuItems: MenuItem[] = [
   { name: 'Message', path: '/messages', icon: <FaRegMessage />, category: 'Menu' },
   { name: 'Communities', path: '/communities', icon: <CgCommunity />, category: 'Menu' },
   { name: 'Semester', path: '/semester', icon: <FaBookReader />, category: 'Menu' },
-  { name: 'ViewPoll', path: '/viewpoll', icon: <CgPoll />, category: 'Menu' },
+  { name: 'ViewPoll', path: '/polls', icon: <CgPoll />, category: 'Menu' },
   { name: 'Faculty', path: '/faculty', icon: <IoMdBook />, category: 'Menu' },
   { name: 'HelpCenters', path: '/helpcenters', icon: <MdHelpOutline />, category: 'Menu' },
   { name: 'Profile', path: '/profile', icon: <CgProfile />, category: 'Settings' },

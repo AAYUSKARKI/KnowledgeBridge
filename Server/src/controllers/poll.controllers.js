@@ -34,6 +34,17 @@ const createPoll = asynchandler(async (req, res) => {
     return res.status(201).json(new Apiresponse(201, poll, "Poll created successfully"));
 });
 
+const getPollbyid = asynchandler(async (req, res) => {
+    const { id } = req.params;
+    const poll = await Poll.findById(id).populate('createdBy', 'username');
+
+    if (!poll) {
+        throw new Apierror(404, "Poll not found");
+    }
+
+    return res.status(200).json(new Apiresponse(200, poll, "Poll fetched successfully"));
+});
+
 const getAllPolls = asynchandler(async (req, res) => {
     const polls = await Poll.find().populate('createdBy', 'username');
 
@@ -90,6 +101,7 @@ const deletePoll = asynchandler(async (req, res) => {
 
 export {
     createPoll,
+    getPollbyid,
     getPollsBySemester,
     votePoll,
     deletePoll,

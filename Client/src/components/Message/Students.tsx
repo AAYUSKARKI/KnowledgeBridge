@@ -25,8 +25,8 @@ const Students = () => {
     }, []);
   return (
     <>
-     <div className="dark:bg-gray-800 overflow-auto h-[200px] flex flex-col p-2 border border-black rounded-xl shadow-md">
-     <p className='text-2xl font-bold text-black dark:text-white'>Students</p>
+     <div className="dark:bg-gray-800 overflow-auto h-[150px] md:h-[200px] flex md:flex-col p-1 md:p-2 border border-black rounded-xl shadow-md">
+     <p className='text-sm md:text-2xl font-bold text-black dark:text-white'>Students</p>
        {
          students.map((student, index) => (
            <MessageStudent key={index} id={student._id} username={student.username} avatar={student.avatar} />

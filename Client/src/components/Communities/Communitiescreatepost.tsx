@@ -2,7 +2,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useState, ChangeEvent } from "react";
 import { IoArrowBack } from "react-icons/io5";
-import toast from "react-hot-toast"; // Assuming you are using react-hot-toast for notifications
+import toast from "react-hot-toast";
 
 interface Post {
   content: string;
@@ -16,7 +16,7 @@ interface CponcProps {
   name: string | undefined;
 }
 
-const Cponc: React.FC<CponcProps> = ({ communityid, popup, name }) => {
+const Cponc: React.FC<CponcProps> = ({ communityid = "", popup, name = "Community" }) => {
   const { user } = useSelector((state: any) => state.user);
 
   const [post, setPost] = useState<Post>({
@@ -51,12 +51,11 @@ const Cponc: React.FC<CponcProps> = ({ communityid, popup, name }) => {
       formData.append("media", post.media);
     }
     formData.append("createdBy", user?._id);
-    formData.append("communityid", communityid || "");
+    formData.append("communityid", communityid);
 
     try {
       axios.defaults.withCredentials = true;
-      const id = communityid || "";
-      await axios.post(`http://localhost:7000/api/v1/posts/community/${id}`, formData, {
+      await axios.post(`http://localhost:7000/api/v1/posts/community/${communityid}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -72,14 +71,13 @@ const Cponc: React.FC<CponcProps> = ({ communityid, popup, name }) => {
       toast.error("Failed to create post");
     }
   };
-  console.log('the popup',popup)
 
   if (!popup) {
     return null; // Render nothing if popup is false
   }
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 transform -translate-x-1/2 w-3/4 p-4 border border-gray-300 rounded-xl shadow-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3/4 p-4 border border-gray-300 rounded-xl shadow-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
       <div className="flex justify-between items-center mb-4">
         <IoArrowBack className="text-3xl cursor-pointer" aria-label="Back" />
         <p className="text-3xl font-bold text-black p-2">Create Post</p>
@@ -98,8 +96,8 @@ const Cponc: React.FC<CponcProps> = ({ communityid, popup, name }) => {
             className="w-12 h-12 rounded-full object-cover mr-2"
           />
           <div className="flex flex-col items-center justify-center">
-          <p className="text-2xl text-black p-2">On {name}</p>
-          <p className="text-2xl text-black p-2">{user?.username}</p>
+            <p className="text-2xl text-black p-2">On {name}</p>
+            <p className="text-2xl text-black p-2">{user?.username}</p>
           </div>
         </div>
         <textarea

@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState, ChangeEvent, FormEvent } from "react";
+import { Link,useNavigate } from "react-router-dom";
 
 interface User {
     email: string;
@@ -14,6 +15,7 @@ interface User {
 }
 
 function Signup() {
+    const navigate = useNavigate();
     const [user, setUser] = useState<User>({
         email: "",
         username: "",
@@ -82,6 +84,7 @@ function Signup() {
             const res = await axios.post('http://localhost:7000/api/v1/users/register', formData);
             if (res.status === 201) {
                 toast.success(res.data.message);
+                navigate("/login");
             } else {
                 toast.error("Failed to register. Please try again.");
             }
@@ -99,18 +102,18 @@ function Signup() {
                 <div className="dark:bg-gray-950 dark:text-gray-100 absolute top-0 left-1/2 transform -translate-x-1/2 flex justify-center items-center gap-4 py-4 bg-white rounded-b-lg shadow-md">
                     <h1
                         onClick={handleStudent}
-                        className={`cursor-pointer text-xl font-bold ${!teacher ? "text-green-500" : "text-gray-500"}`}
+                        className={`cursor-pointer text-sm md:text-xl font-bold ${!teacher ? "text-green-500" : "text-gray-500"}`}
                     >
                         Sign Up As A Student
                     </h1>
                     <h1
                         onClick={handleTeacher}
-                        className={`cursor-pointer text-xl font-bold ${teacher ? "text-green-500" : "text-gray-500"}`}
+                        className={`cursor-pointer text-sm md:text-xl font-bold ${teacher ? "text-green-500" : "text-gray-500"}`}
                     >
                         Sign Up As A Teacher
                     </h1>
                 </div>
-                <h1 className="text-3xl font-bold text-gray-800 mt-12 mb-6">You are signing as a {user.role}</h1>
+                <h1 className="text-xl md:text-3xl md:font-bold text-gray-800 mt-12 mb-6">You are signing as a {user.role}</h1>
                 <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center">
                         <label htmlFor="avatar" className="cursor-pointer flex flex-col items-center">
@@ -190,6 +193,12 @@ function Signup() {
                         {loading ? "Loading..." : "Sign Up"}
                     </button>
                 </form>
+            </div>
+            <div className="flex items-center justify-center mt-4 bg-white dark:bg-gray-950">
+                <p className="text-gray-700 dark:text-white">Already have an account?</p>
+                <Link to="/login" className="text-indigo-600 dark:text-indigo-400 ml-1 hover:underline">
+                    Log In
+                </Link>
             </div>
         </div>
     );
