@@ -10,7 +10,7 @@ dotenv.config({path : './.env'})
 
 
 
-  const allowedOrigins = ['https://group-project-livid.vercel.app', 'http://localhost:5173','https://lucidmerch.netlify.app'];
+  const allowedOrigins = ['https://knowledgebridge.netlify.app', 'http://localhost:5173','https://knowledge-bridge-rouge.vercel.app'];
 
   const corsOptions = {
     origin: function(origin, callback) {
@@ -25,25 +25,6 @@ dotenv.config({path : './.env'})
     exposedHeaders: ['Content-Length', 'X-Foo'],
     credentials: true, 
   };
-
-  app.use((err, req, res, next) => {
-    if (err instanceof Apierror) {
-        res.status(err.statusCode).json({
-            success: err.success,
-            message: err.message,
-            errors: err.errors,
-            stack: process.env.NODE_ENV === 'development' ? err.stack : undefined, // Send stack trace only in development
-        });
-    } else {
-        // Handle other types of errors (generic error handling)
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-            errors: [],
-            stack: process.env.NODE_ENV === 'development' ? err.stack : undefined, // Send stack trace only in development
-        });
-    }
-});
   
 app.use(cors(corsOptions));
 app.use(express.json({limit:"16kb"}))

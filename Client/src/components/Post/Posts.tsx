@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const getPosts = async () => {
       await axios
-        .get("http://localhost:7000/api/v1/posts")
+        .get("https://knowledgebridge-to7m.onrender.com/api/v1/posts")
         .then((response) => {
           setPosts(response.data.data);
         });

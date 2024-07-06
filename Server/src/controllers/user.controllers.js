@@ -414,6 +414,11 @@ const getallteachers = asynchandler(async (req, res) => {
     return res.status(200).json(new Apiresponse(200, teachers, "all teachers fetched successfully"))
 })
 
+const total = asynchandler(async (req, res) => {
+    const totalstudents = await User.countDocuments({ role: "student" })
+    const totalteachers = await User.countDocuments({ role: "teacher" })
+    return res.status(200).json(new Apiresponse(200, { totalstudents, totalteachers }, "total fetched successfully"))
+})
 export {
     registerUser,
     loginuser,
@@ -430,5 +435,6 @@ export {
     forgetpassword,
     resetpassword,
     getallstudents,
-    getallteachers
+    getallteachers,
+    total
 }

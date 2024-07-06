@@ -32,7 +32,7 @@ function Login() {
 
         try {
             setLoading(true);
-            const res = await axios.post('http://localhost:7000/api/v1/users/login', loginData);
+            const res = await axios.post('https://knowledgebridge-to7m.onrender.com/api/v1/users/login', loginData);
             const { accesstoken, user } = res.data.data;
 
             // Store the access token in cookies

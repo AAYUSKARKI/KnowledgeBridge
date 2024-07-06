@@ -48,7 +48,7 @@ const Createpost: React.FC = () => {
 
     try {
         axios.defaults.withCredentials = true
-      await axios.post("http://localhost:7000/api/v1/posts", formData, {
+      await axios.post("https://knowledgebridge-to7m.onrender.com/api/v1/posts", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

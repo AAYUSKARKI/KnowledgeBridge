@@ -46,7 +46,7 @@ const Communitiesposts: React.FC<PostProps> = ({ id, name }) => {
         return;
       }
       await axios
-        .get(`http://localhost:7000/api/v1/posts/community/${id}`)
+        .get(`https://knowledgebridge-to7m.onrender.com/api/v1/posts/community/${id}`)
         .then((response) => {
           setPosts(response.data.data);
         });

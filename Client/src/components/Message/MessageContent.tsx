@@ -26,7 +26,7 @@ function MessageContent() {
     try {
       const id = selectedperson.id
       axios.defaults.withCredentials = true
-      const response = await axios.post('http://localhost:7000/api/v1/messages/sendmessage/'+id, { message });
+      const response = await axios.post('https://knowledgebridge-to7m.onrender.com/api/v1/messages/sendmessage/'+id, { message });
       console.log(response.data);
     } catch (error)
      {

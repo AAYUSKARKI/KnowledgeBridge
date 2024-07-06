@@ -55,7 +55,7 @@ const Cponc: React.FC<CponcProps> = ({ communityid = "", popup, name = "Communit
 
     try {
       axios.defaults.withCredentials = true;
-      await axios.post(`http://localhost:7000/api/v1/posts/community/${communityid}`, formData, {
+      await axios.post(`https://knowledgebridge-to7m.onrender.com/api/v1/posts/community/${communityid}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

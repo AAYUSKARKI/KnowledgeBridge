@@ -36,7 +36,7 @@ const PollForm = () => {
         e.preventDefault();
         try{
             axios.defaults.withCredentials = true
-            const res = await axios.post('http://localhost:7000/api/v1/polls', formData, {
+            const res = await axios.post('https://knowledgebridge-to7m.onrender.com/api/v1/polls', formData, {
                 headers: {
                     Authorization: `Bearer ${user?.accessToken}`
                 }

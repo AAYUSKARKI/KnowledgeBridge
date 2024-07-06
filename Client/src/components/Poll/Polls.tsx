@@ -26,7 +26,7 @@ const Polls = () => {
     const getPolls = async () => {
         try {
             axios.defaults.withCredentials=true;
-            const res = await axios.get('http://localhost:7000/api/v1/polls');
+            const res = await axios.get('https://knowledgebridge-to7m.onrender.com/api/v1/polls');
             setPolls(res.data.data);
             setLoading(false); // Set loading to false after fetching data
         } catch (err: any) {
@@ -56,7 +56,7 @@ const Polls = () => {
         console.log(`Voted for ${selectedOption} in poll ${pollId}`);
         try {
             axios.defaults.withCredentials=true;
-            const res = await axios.post(`http://localhost:7000/api/v1/polls/vote`, { pollId, option: selectedOption });
+            const res = await axios.post(`https://knowledgebridge-to7m.onrender.com/api/v1/polls/vote`, { pollId, option: selectedOption });
             console.log(res.data);
             toast.success(res.data.message)
         } catch (err: any) {

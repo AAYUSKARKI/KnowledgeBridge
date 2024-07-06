@@ -39,7 +39,7 @@ function CreateCommunity() {
             formData.append("createdBy", createdBy);
 
             axios.defaults.withCredentials = true;
-            const response = await axios.post("http://localhost:7000/api/v1/communities", formData, {
+            const response = await axios.post("https://knowledgebridge-to7m.onrender.com/api/v1/communities", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

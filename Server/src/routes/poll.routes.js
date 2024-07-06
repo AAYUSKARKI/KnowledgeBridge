@@ -5,7 +5,8 @@ import {
     getAllPolls,
     votePoll,
     getPollbyid,
-    deletePoll
+    deletePoll,
+    totalPolls
 } from "../controllers/poll.controllers.js";
 
 import { verifyJWT } from "../middleware/auth.middleware.js";
@@ -27,5 +28,8 @@ router.route("/vote")
 
 router.route("/semester/:semesterId")
     .get(verifyJWT, getPollsBySemester);
+
+router.route("/totalpolls")
+    .get(verifyJWT, totalPolls);
 
 export default router;

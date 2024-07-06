@@ -99,8 +99,15 @@ const deletePoll = asynchandler(async (req, res) => {
     return res.status(200).json(new Apiresponse(200, poll, "Poll deleted successfully"));
 });
 
+const totalPolls = asynchandler(async (req, res) => {
+    console.log('i am listening');
+    const totalpoll = await Poll.find({isSolved: false}).countDocuments();
+    return res.status(200).json(new Apiresponse(200, totalpoll, "Total number of polls"));
+});
+
 export {
     createPoll,
+    totalPolls,
     getPollbyid,
     getPollsBySemester,
     votePoll,

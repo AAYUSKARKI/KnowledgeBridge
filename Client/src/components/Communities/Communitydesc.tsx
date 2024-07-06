@@ -28,7 +28,7 @@ const Communitydesc: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.get(`http://localhost:7000/api/v1/communities/${id}`);
+      const response = await axios.get(`https://knowledgebridge-to7m.onrender.com/api/v1/communities/${id}`);
       setCommunity(response.data.data);
     } catch (error) {
       toast.error("Error fetching community");

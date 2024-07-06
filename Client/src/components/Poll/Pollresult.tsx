@@ -28,8 +28,10 @@ function Pollresult() {
             toast.error("Poll not found")
             return
         }
-        const response = await axios.get(`http://localhost:7000/api/v1/polls/${id}`)
+        if(id) {
+        const response = await axios.get(`https://knowledgebridge-to7m.onrender.com/api/v1/polls/${id}`)
         setPoll(response.data.data)
+    }
     }
 
     useEffect(() => {

@@ -20,7 +20,7 @@ function Communities() {
   const getCommunities = async () => {
     try {
       axios.defaults.withCredentials=true
-      const res = await axios.get("http://localhost:7000/api/v1/communities");
+      const res = await axios.get("https://knowledgebridge-to7m.onrender.com/api/v1/communities");
       setCommunities(res.data.data);
       setLoading(false);
     } catch (error) {

@@ -81,7 +81,7 @@ function Signup() {
             formData.append("role", user.role);
             formData.append("semester", user.semester);
 
-            const res = await axios.post('http://localhost:7000/api/v1/users/register', formData);
+            const res = await axios.post('https://knowledgebridge-to7m.onrender.com/api/v1/users/register', formData);
             if (res.status === 201) {
                 toast.success(res.data.message);
                 navigate("/login");

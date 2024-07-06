@@ -13,6 +13,7 @@ import {
     updateuser,
     deleteuser,
     forgetpassword,
+    total,
     resetpassword,
     getallteachers,
     getallstudents
@@ -64,5 +65,6 @@ router.route("/forgetpassword").post(forgetpassword)
 router.route("/resetpassword/:token").post(resetpassword)
 router.route("/teachers").get(getallteachers)
 router.route("/students").get(getallstudents)
+router.route("/total").get(total)
 
 export default router //can be imported by any name _eg RegisterUser

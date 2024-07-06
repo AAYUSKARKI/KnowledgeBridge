@@ -32,7 +32,7 @@ function Chatcard() {
             setLoading(true);
             axios.defaults.withCredentials = true;
             const id = selectedperson.id;
-            const res = await axios.get('http://localhost:7000/api/v1/messages/getmessage/' + id);
+            const res = await axios.get('https://knowledgebridge-to7m.onrender.com/api/v1/messages/getmessage/' + id);
             setMessages(res.data.data);
             console.log(res.data.data);
             setLoading(false);
