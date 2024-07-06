@@ -10,7 +10,7 @@ function Content2() {
     axios.defaults.withCredentials = true;
     try {
       const response = await axios.get(
-        "http://localhost:7000/api/v1/users/total"
+        "https://knowledgebridge-to7m.onrender.com/api/v1/users/total"
       );
       setTotalStudents(response.data.data.totalstudents);
       setTotalTeachers(response.data.data.totalteachers);
@@ -23,7 +23,7 @@ function Content2() {
     axios.defaults.withCredentials = true;
     try {
       const response = await axios.get(
-        "http://localhost:7000/api/v1/polls/totalpolls"
+        "https://knowledgebridge-to7m.onrender.com/api/v1/polls/totalpolls"
       );
       setTotalProblems(response.data.data);
     } catch (error) {
